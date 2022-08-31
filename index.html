@@ -17,12 +17,12 @@
         <article class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__person">Исследователь океана</p>
-          <button class="profile__edit">
+          <button class="profile__edit" type="button">
             <!--нужен ли класс edit-button?-->
             <img class="edit-button" src="./images/vector-pen.svg" alt="редактирование">
           </button>
         </article>
-        <button class="profile__add">
+        <button class="profile__add" type="button">
           <!--нужен ли класс add-button?-->
           <img class="add-button" src="./images/vector-plus.svg" alt="добавить">
         </button>
@@ -32,7 +32,7 @@
             <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Карачаевск</h2>
-              <button class="element__heart">
+              <button class="element__heart" type="button">
                 <img src="./images/vector-heart.svg" alt="лайк">
               </button>
             </div>
@@ -41,7 +41,7 @@
             <img class="element__img" src="./images/elbrus.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__heart">
+              <button class="element__heart" type="button">
                 <img src="./images/vector-heart.svg" alt="лайк">
               </button>
             </div>
@@ -50,7 +50,7 @@
             <img class="element__img" src="./images/dombai.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
-              <button class="element__heart">
+              <button class="element__heart" type="button">
                 <img src="./images/vector-heart.svg" alt="лайк">
               </button>
             </div>
@@ -59,7 +59,7 @@
             <img class="element__img" src="./images/elbrus.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__heart">
+              <button class="element__heart" type="button">
                 <img src="./images/vector-heart.svg" alt="лайк">
               </button>
             </div>
@@ -68,7 +68,7 @@
             <img class="element__img" src="./images/dombai.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
-              <button class="element__heart">
+              <button class="element__heart" type="button">
                 <img src="./images/vector-heart.svg" alt="лайк">
               </button>
             </div>
@@ -77,7 +77,7 @@
             <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Карачаево-Черкессия</h2>
-              <button class="element__heart">
+              <button class="element__heart" type="button">
                <img src="./images/vector-heart.svg" alt="лайк">
              </button>
             </div>
@@ -87,5 +87,21 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
+    <section class="popup popup_opened">
+      <form class="popup__container" action="#">
+        <button class="button-close">
+          <img src="./images/сlose-icon.svg" alt="закрыть всплывающее окно">
+        </button>
+        <h2>Редактировать профиль</h2>
+        <fieldset>
+          <input type="text">
+          <input type="text">
+        </fieldset>
+        <fieldset></fieldset>
+        <button>
+          <p>Сохранить</p>
+        </button>
+      </form>      
+    </section>
   </body>
 </html>
