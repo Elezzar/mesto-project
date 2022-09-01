@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Project Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
   </head>
-  <body class="page">
+  <body class="body">
+    <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/header-logo.svg" alt="Логотип Mesto Russia">
+      <div class="header__logo"></div>
       <div class="header__line"></div>
     </header>
     <main class="content">
@@ -17,23 +18,18 @@
         <article class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__person">Исследователь океана</p>
-          <button class="profile__edit" type="button">
-            <!--нужен ли класс edit-button?-->
-            <img class="edit-button" src="./images/vector-pen.svg" alt="редактирование">
-          </button>
+          <button class="profile__edit" type="button"></button>
         </article>
-        <button class="profile__add" type="button">
-          <!--нужен ли класс add-button?-->
-          <img class="add-button" src="./images/vector-plus.svg" alt="добавить">
-        </button>
+        <button class="profile__add" type="button"></button>
       </section>
+      <section class="grid-zone">
       <ul class="elements">
           <li class="element">
             <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Карачаевск</h2>
               <button class="element__heart" type="button">
-                <img src="./images/vector-heart.svg" alt="лайк">
+                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
               </button>
             </div>
           </li>
@@ -42,7 +38,7 @@
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
               <button class="element__heart" type="button">
-                <img src="./images/vector-heart.svg" alt="лайк">
+                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
               </button>
             </div>
           </li>
@@ -51,7 +47,7 @@
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
               <button class="element__heart" type="button">
-                <img src="./images/vector-heart.svg" alt="лайк">
+                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
               </button>
             </div>
           </li>
@@ -60,7 +56,7 @@
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
               <button class="element__heart" type="button">
-                <img src="./images/vector-heart.svg" alt="лайк">
+                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
               </button>
             </div>
           </li>
@@ -69,7 +65,7 @@
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
               <button class="element__heart" type="button">
-                <img src="./images/vector-heart.svg" alt="лайк">
+                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
               </button>
             </div>
           </li>
@@ -78,16 +74,17 @@
             <div class="element__text-zone">
               <h2 class="element__name">Карачаево-Черкессия</h2>
               <button class="element__heart" type="button">
-               <img src="./images/vector-heart.svg" alt="лайк">
+               <!--<img src="./images/vector-heart.svg" alt="лайк">-->
              </button>
             </div>
           </li>
       </ul>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <section class="popup popup_opened">
+    <!--<section class="popup popup_opened">
       <form class="popup__container" action="#">
         <button class="button-close">
           <img src="./images/сlose-icon.svg" alt="закрыть всплывающее окно">
@@ -102,6 +99,7 @@
           <p>Сохранить</p>
         </button>
       </form>      
-    </section>
+    </section>-->
+  </div>
   </body>
 </html>
