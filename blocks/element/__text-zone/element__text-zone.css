@@ -1,0 +1,11 @@
+.element__text-zone {
+  
+  grid-area: element__text-zone;
+  display: flex;
+  margin: 0;
+  padding: 25px 15px 32px 21px;
+  max-width: 246px;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}

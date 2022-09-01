@@ -1,0 +1,21 @@
+.element__heart {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  background-image: url('../../../images/vector-heart.svg');
+  border: none;
+  width: 22px;
+  height: 19px;
+  position: relative;
+  right: 5px;
+  top: 5px;
+}
+
+.element__heart:hover {
+  opacity: 0.5;
+}
+
+.element__heart:active {
+  opacity: 1;
+  background-image: url('../../../images/vector-heart-active.svg');
+}
