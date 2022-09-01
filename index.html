@@ -28,54 +28,42 @@
             <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Карачаевск</h2>
-              <button class="element__heart" type="button">
-                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
-              </button>
+              <button class="element__heart" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__img" src="./images/elbrus.png" alt="Карачаевск">
+            <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__heart" type="button">
-                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
-              </button>
+              <button class="element__heart" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__img" src="./images/dombai.png" alt="Карачаевск">
+            <img class="element__img" src="./images/dombai.png" alt="Домбай">
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
-              <button class="element__heart" type="button">
-                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
-              </button>
+              <button class="element__heart" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__img" src="./images/elbrus.png" alt="Карачаевск">
+            <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__heart" type="button">
-                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
-              </button>
+              <button class="element__heart" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__img" src="./images/dombai.png" alt="Карачаевск">
+            <img class="element__img" src="./images/dombai.png" alt="Домбай">
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
-              <button class="element__heart" type="button">
-                <!--<img src="./images/vector-heart.svg" alt="лайк">-->
-              </button>
+              <button class="element__heart" type="button"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
+            <img class="element__img" src="./images/karachaevsk.png" alt="Карачаево-Черкессия">
             <div class="element__text-zone">
               <h2 class="element__name">Карачаево-Черкессия</h2>
-              <button class="element__heart" type="button">
-               <!--<img src="./images/vector-heart.svg" alt="лайк">-->
-             </button>
+              <button class="element__heart" type="button"></button>
             </div>
           </li>
       </ul>
@@ -84,22 +72,19 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <!--<section class="popup popup_opened">
-      <form class="popup__container" action="#">
-        <button class="button-close">
-          <img src="./images/сlose-icon.svg" alt="закрыть всплывающее окно">
-        </button>
-        <h2>Редактировать профиль</h2>
-        <fieldset>
-          <input type="text">
-          <input type="text">
-        </fieldset>
-        <fieldset></fieldset>
-        <button>
-          <p>Сохранить</p>
-        </button>
-      </form>      
-    </section>-->
+    <div class="popup"> <!--popup_opened-->
+      <div class="popup__container">
+        <button class="popup__button-close"></button>
+        <form class="popup__form" action="#">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input class="popup__name" type="text" placeholder="Жак-Ив Кусто" required>  
+          <input class="popup__person" type="text" placeholder="Исследователь океана" required>
+          <button class="popup__button-save" type="submit" name="Сохранить">
+            <span class="popup__button-text">Сохранить</span>
+          </button>
+        </form>     
+      </div> 
+    </div>
   </div>
   </body>
 </html>
