@@ -10,16 +10,15 @@
     <div class="page">
     <header class="header">
       <div class="header__logo"></div>
-      <div class="header__line"></div>
     </header>
     <main class="content">
       <section class="profile">
         <img class="profile__avatar" src="./images/avatar-image.png" alt="Фотография Жака-Ива Кусто">
-        <article class="profile__info">
+        <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__person">Исследователь океана</p>
           <button class="profile__edit" type="button"></button>
-        </article>
+        </div>
         <button class="profile__add" type="button"></button>
       </section>
       <section class="grid-zone">
@@ -28,42 +27,42 @@
             <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
             <div class="element__text-zone">
               <h2 class="element__name">Карачаевск</h2>
-              <button class="element__heart" type="button"></button>
+              <button class="element__heart" type="button"></button> <!-- element__heart_active-->
             </div>
           </li>
           <li class="element">
             <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__heart" type="button"></button>
+              <button class="element__heart" type="button"></button> <!-- element__heart_active-->
             </div>
           </li>
           <li class="element">
             <img class="element__img" src="./images/dombai.png" alt="Домбай">
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
-              <button class="element__heart" type="button"></button>
+              <button class="element__heart" type="button"></button> <!-- element__heart_active-->
             </div>
           </li>
           <li class="element">
             <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
             <div class="element__text-zone">
               <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__heart" type="button"></button>
+              <button class="element__heart" type="button"></button> <!-- element__heart_active-->
             </div>
           </li>
           <li class="element">
             <img class="element__img" src="./images/dombai.png" alt="Домбай">
             <div class="element__text-zone">
               <h2 class="element__name">Домбай</h2>
-              <button class="element__heart" type="button"></button>
+              <button class="element__heart" type="button"></button> <!-- element__heart_active-->
             </div>
           </li>
           <li class="element">
             <img class="element__img" src="./images/karachaevsk.png" alt="Карачаево-Черкессия">
             <div class="element__text-zone">
               <h2 class="element__name">Карачаево-Черкессия</h2>
-              <button class="element__heart" type="button"></button>
+              <button class="element__heart" type="button"></button> <!-- element__heart_active-->
             </div>
           </li>
       </ul>
@@ -75,13 +74,11 @@
     <div class="popup"> <!--popup_opened-->
       <div class="popup__container">
         <button class="popup__button-close"></button>
-        <form class="popup__form" action="#">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__name" type="text" placeholder="Жак-Ив Кусто" required>  
-          <input class="popup__person" type="text" placeholder="Исследователь океана" required>
-          <button class="popup__button-save" type="submit" name="Сохранить">
-            <span class="popup__button-text">Сохранить</span>
-          </button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="profile-info" action="#" method="get">
+          <input class="popup__name" name="profile-name" type="text" placeholder="Жак-Ив Кусто" required>  
+          <input class="popup__person" name="profile-person" type="text" placeholder="Исследователь океана" required>
+          <button class="popup__button-save" type="submit" name="Сохранить">Сохранить</button>
         </form>     
       </div> 
     </div>

@@ -1,5 +1,4 @@
 .element__text-zone {
-  
   grid-area: element__text-zone;
   display: flex;
   margin: 0;
@@ -7,5 +6,5 @@
   max-width: 246px;
   flex-direction: row;
   justify-content: space-between;
-  position: relative;
+  align-items: center;
 }

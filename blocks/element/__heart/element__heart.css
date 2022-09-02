@@ -1,18 +1,15 @@
 .element__heart {
-  margin: 0;
-  padding: 0;
+  margin-right: 3px;
   background: #fff;
   background-image: url('../../../images/vector-heart.svg');
   border: none;
   width: 22px;
   height: 19px;
-  position: relative;
-  right: 5px;
-  top: 5px;
 }
 
 .element__heart:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .element__heart:active {
