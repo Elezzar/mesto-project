@@ -1,18 +1,14 @@
-.element__heart {
+.element__button-heart {
   margin-right: 3px;
   background: #fff;
   background-image: url('../../../images/vector-heart.svg');
   border: none;
   width: 22px;
   height: 19px;
+  transition: linear 1s;
 }
 
-.element__heart:hover {
+.element__button-heart:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-
-.element__heart:active {
-  opacity: 1;
-  background-image: url('../../../images/vector-heart-active.svg');
 }

@@ -6,13 +6,12 @@
   margin: 45px 0px 0px;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-  
 }
 
 @media screen and (max-width: 455px) {
   .header__logo {
-    background-size: 103.7px 24.4px;
+    background-size: 103px 24px;
     margin: 28px 27px 0px;
-    padding: 24px 0px 31.6px;
+    padding: 24px 0px 31px;
   }
 }

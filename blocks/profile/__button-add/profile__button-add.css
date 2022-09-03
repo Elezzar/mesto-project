@@ -1,4 +1,4 @@
-.profile__add {
+.profile__button-add {
   background-color: #000;
   border: 2px solid #fff;
   border-radius: 2px;
@@ -7,17 +7,18 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 22px;
-  padding: 23.5px 73.5px;
+  padding: 23px 73px;
+  transition: linear 1s;
 }
 
-.profile__add:hover {
+.profile__button-add:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
 @media screen and (max-width: 455px) {
-  .profile__add {
-    padding: 23.5px 139.5px;
+  .profile__button-add {
+    padding: 23px 139px;
     background-size: 16px;
   }
 }
