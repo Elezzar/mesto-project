@@ -1,6 +1,12 @@
 const content = document.querySelector('.page');
 
-//переменная с данными для карточек
+
+
+//добавление карточек:
+const elements = content.querySelector('.elements');
+
+const cardTemplate = content.querySelector('.card-template').content;
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -27,6 +33,21 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+
+initialCards.forEach(function(element) {
+
+  const cardElement = cardTemplate.cloneNode(true);
+
+  cardElement.querySelector('.element__img').src = element.link;
+  cardElement.querySelector('.element__img').alt = element.name;
+  cardElement.querySelector('.element__name').textContent = element.name;
+
+elements.append(cardElement);
+
+})
+
+
 
 
 
@@ -91,19 +112,4 @@ closeButtonCard.addEventListener('click', function() {
 
 
 
-//const buttonsHeart = content.querySelectorAll('.element__button-heart');
-//const buttonHeart = Array.prototype.slice.call(buttonsHeart);
 
-//function buttonLike() {
-  //buttonHeart.classList.toggle('element__button-heart_active');
-//};
-
-//buttonHeart.forEach((item => {
-  //item.classList.toggle('element__button-heart_active')
-//}));
-
-//buttonHeart.addEventListener('click', function() {
-  //evt.forEach((item => {
-    //item.classList.toggle('element__button-heart_active')
-  //}));
-//});
