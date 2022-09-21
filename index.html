@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
+    <script src="./script.js" defer></script>
   </head>
+
   <body class="body">
+
     <div class="page">
+
       <header class="header">
         <div class="header__logo"></div>
       </header>
+
       <main class="content">
+
         <section class="profile">
           <img class="profile__avatar" src="./images/avatar-image.png" alt="Фотография Жака-Ива Кусто">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__person">Исследователь океана</p>
-            <button class="profile__button-edit" type="button" aria-label="редактирование профиля"></button>
+            <button class="profile__button-edit" type="button" aria-label="редактирование профиля" id="button-edit"></button>
           </div>
-          <button class="profile__button-add" type="button" aria-label="добавить карточку с местом"></button>
+          <button class="profile__button-add" type="button" aria-label="добавить карточку с местом" id="button-card"></button>
         </section>
+
         <section class="grid-zone">
           <ul class="elements">
             <li class="element">
               <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
+              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
               <div class="element__text-zone">
                 <h2 class="element__name">Карачаевск</h2>
                 <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
@@ -32,6 +40,7 @@
             </li>
             <li class="element">
               <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
+              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
               <div class="element__text-zone">
                 <h2 class="element__name">Гора Эльбрус</h2>
                 <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
@@ -39,6 +48,7 @@
             </li>
             <li class="element">
               <img class="element__img" src="./images/dombai.png" alt="Домбай">
+              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
               <div class="element__text-zone">
                 <h2 class="element__name">Домбай</h2>
                 <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
@@ -46,6 +56,7 @@
             </li>
             <li class="element">
               <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
+              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
               <div class="element__text-zone">
                 <h2 class="element__name">Гора Эльбрус</h2>
                 <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
@@ -53,6 +64,7 @@
             </li>
             <li class="element">
               <img class="element__img" src="./images/dombai.png" alt="Домбай">
+              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
               <div class="element__text-zone">
                 <h2 class="element__name">Домбай</h2>
                 <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
@@ -60,6 +72,7 @@
             </li>
             <li class="element">
               <img class="element__img" src="./images/karachaevsk.png" alt="Карачаево-Черкессия">
+              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
               <div class="element__text-zone">
                 <h2 class="element__name">Карачаево-Черкессия</h2>
                 <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
@@ -67,13 +80,16 @@
             </li>
           </ul>
         </section>
+
       </main>
+
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
-      <div class="popup"> <!--popup_opened-->
+
+      <div class="popup" id="popup-profile"> <!--popup_opened-->
         <div class="popup__container">
-          <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля"></button>
+          <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля" id="close-button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="profile-info" action="#" method="get">
             <input class="popup__input" name="profile-name" type="text" placeholder="Жак-Ив Кусто" required>  <!--popup__input_data_name-->
@@ -82,6 +98,30 @@
           </form>     
         </div> 
       </div>
+
+      <div class="popup" id="popup-card"> <!--popup_opened-->
+        <div class="popup__container">
+          <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля" id="close-button-card"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form" name="profile-info" action="#" method="get">
+            <input class="popup__input" name="profile-name" type="text" placeholder="Название" required>  <!--popup__input_data_name-->
+            <input class="popup__input" name="profile-person" type="text" placeholder="Ссылка на картинку" required>  <!--popup__input_data_name-->
+            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button>
+          </form>     
+        </div> 
+      </div>
+
+      <template>
+        <li class="element">
+          <img class="element__img">
+          <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
+          <div class="element__text-zone">
+            <h2 class="element__name"></h2>
+            <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
+          </div>
+        </li>
+      </template>
+
     </div>
   </body>
 </html>
