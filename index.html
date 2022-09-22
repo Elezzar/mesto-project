@@ -30,54 +30,7 @@
 
         <section class="grid-zone">
           <ul class="elements">
-        <!--<li class="element">
-              <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
-              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
-              <div class="element__text-zone">
-                <h2 class="element__name">Карачаевск</h2>
-                <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> 
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
-              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
-              <div class="element__text-zone">
-                <h2 class="element__name">Гора Эльбрус</h2>
-                <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> 
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/dombai.png" alt="Домбай">
-              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
-              <div class="element__text-zone">
-                <h2 class="element__name">Домбай</h2>
-                <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> 
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/elbrus.png" alt="Гора Эльбрус">
-              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
-              <div class="element__text-zone">
-                <h2 class="element__name">Гора Эльбрус</h2>
-                <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> 
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/dombai.png" alt="Домбай">
-              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
-              <div class="element__text-zone">
-                <h2 class="element__name">Домбай</h2>
-                <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> 
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/karachaevsk.png" alt="Карачаево-Черкессия">
-              <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
-              <div class="element__text-zone">
-                <h2 class="element__name">Карачаево-Черкессия</h2>
-                <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> 
-              </div>
-            </li>-->
+        
           </ul>
         </section>
 
@@ -101,7 +54,7 @@
 
       <div class="popup" id="popup-card"> <!--popup_opened-->
         <div class="popup__container">
-          <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля" id="close-button-card"></button>
+          <button class="popup__button-close" type="button" aria-label="закрыть окно" id="close-button-card"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form" name="profile-info" action="#" method="get">
             <input class="popup__input" name="profile-name" type="text" placeholder="Название" required>  <!--popup__input_data_name-->
@@ -109,6 +62,14 @@
             <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button>
           </form>     
         </div> 
+      </div>
+
+      <div class="popup" id="popup-image"> <!--popup_opened-->
+        <div class="popup-image-container">
+          <button class="popup__button-close" type="button" aria-label="закрыть окно" id="close-button-card"></button>
+          <img class="popup__image">
+          <h2 class="popup__image-name"></h2>
+        </div>
       </div>
 
       <template class="card-template">
