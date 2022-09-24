@@ -4,7 +4,6 @@
 const content = document.querySelector('.page');
 
 
-
 //карточи и взаимодействие с кнопками внутри карточек:
 const elements = content?.querySelector('.elements');
 
@@ -50,23 +49,17 @@ initialCards.forEach(function(element) {
   const likeButton = cardElement.querySelector('.element__button-heart');
   likeButton.addEventListener('click', function () {
     likeButton.classList.toggle('element__button-heart_active');
-  }
-  );
+  });
 
   //удаление карточки
   const trashButton = cardElement.querySelector('.element__button-trash');
   trashButton.addEventListener('click', function () {
     const removeItem = trashButton.closest('.element');
     removeItem.remove();
-  }
-  );
+  });
 
 elements?.append(cardElement);
-})
-
-
-
-
+});
 
 
 //popup с профилем:
@@ -94,7 +87,6 @@ closeButton?.addEventListener('click', function() {
 });
 
 
-
 //popup с данными о месте:
 
 const buttonCard = content?.querySelector('#button-card');
@@ -120,32 +112,29 @@ closeButtonCard?.addEventListener('click', function() {
 });
 
 
-// popup с развернутой карточкой места:
+//popup с картинкой
+
+const popupImageZone = content?.querySelector('#popup-image');
+
+const popupImage = popupImageZone?.querySelector('.popup__image');
+const popupText = popupImageZone?.querySelector('.popup__image-name');
+
+const cardsImage = elements?.querySelectorAll('.element__img'); 
 
 
-
-  //popup с развернутым изображением
-  /*const popupImage = content?.querySelector('#popup-image');
-
-  const imageTemplate = content?.querySelector('.image-template')?.content;
-
-  const imageElement = imageTemplate.cloneNode(true);
-
-  cardElement.querySelector('.element__img').addEventListener('click', function () {
-    popupImage?.classList.add('popup_opened');
-    imageElement.querySelector('.popup__image').src = element.link;
-    imageElement.querySelector('.popup__image').alt = element.name;
-    imageElement.querySelector('.popup__image-name').textContent = element.name;
+cardsImage?.forEach(element => {
+  element.addEventListener('click', function(evt) {
+    popupImageZone?.classList.add('popup_opened');
+        
+    const popupImageClosed = content?.querySelector('#popup-image-closed');
     
-  }
-  );
+    popupImageClosed?.addEventListener('click', function() {
+      popupImageZone?.classList.remove('popup_opened')
+    });    
 
-  popupImage?.append(imageElement);*/
-
-
-
-
-
-
-
+    popupImage.src = evt.target.src;
+    popupImage.alt = evt.target.alt;
+    popupText.textContent = evt.target.alt;
+  });
+});
 
