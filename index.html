@@ -41,24 +41,24 @@
       </footer>
 
       <div class="popup" id="popup-profile"> <!--popup_opened-->
-        <div class="popup__container">
+        <div class="popup__container" id="profile-form">
           <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля" id="close-button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="profile-info" action="#" method="get">
-            <input class="popup__input" name="profile-name" type="text" placeholder="Жак-Ив Кусто" required>  <!--popup__input_data_name-->
-            <input class="popup__input" name="profile-person" type="text" placeholder="Исследователь океана" required>  <!--popup__input_data_name-->
+            <input class="popup__input" name="profile-name" type="text" placeholder="Имя" value="Жак-Ив Кусто" required id="profile-name">  <!--popup__input_data_name-->
+            <input class="popup__input" name="profile-person" type="text" placeholder="Деятельность" value="Исследователь океана" required id="profile-person">  <!--popup__input_data_name-->
             <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Сохранить</button>
           </form>     
         </div> 
       </div>
 
       <div class="popup" id="popup-card"> <!--popup_opened-->
-        <div class="popup__container">
+        <div class="popup__container" id="card-form">
           <button class="popup__button-close" type="button" aria-label="закрыть окно" id="close-button-card"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form" name="profile-info" action="#" method="get">
-            <input class="popup__input" name="profile-name" type="text" placeholder="Название" required>  <!--popup__input_data_name-->
-            <input class="popup__input" name="profile-person" type="text" placeholder="Ссылка на картинку" required>  <!--popup__input_data_name-->
+            <input class="popup__input" name="card-name" type="text" placeholder="Название" required id="card-name">  <!--popup__input_data_name-->
+            <input class="popup__input" name="img-url" type="text" placeholder="Ссылка на картинку" required id="img-url">  <!--popup__input_data_name-->
             <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button>
           </form>     
         </div> 
