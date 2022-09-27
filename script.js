@@ -1,3 +1,5 @@
+// @ts-check
+
 /*          ***переменные***          */
 
 const content = document.querySelector('.page');
@@ -62,11 +64,11 @@ closeButton?.addEventListener('click', function() {
 });
 
 buttonCard?.addEventListener('click', function() {
-  openPopup(buttonCard)
+  openPopupCard()
 });
 
 closeButtonCard?.addEventListener('click', function() {
-  closePopup(closeButtonCard)
+  closePopupCard()
 });
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -124,6 +126,16 @@ function openPopup() {
 
 function closePopup() {
   popupProfile?.classList.remove('popup_opened');
+};
+
+
+/*открытие/закрытие popup с созданием новой карточки*/
+function openPopupCard() {
+  popupCard?.classList.add('popup_opened');
+};
+
+function closePopupCard() {
+  popupCard?.classList.remove('popup_opened');
 };
 
 /*внесение данных из popup профиля*/
