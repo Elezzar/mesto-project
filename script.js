@@ -1,5 +1,3 @@
-// @ts-check
-
 /*          ***переменные***          */
 
 const content = document.querySelector('.page');
