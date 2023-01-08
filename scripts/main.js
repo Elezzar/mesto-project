@@ -6,6 +6,7 @@ const body = document.querySelector('.body');
 /**контент страницы*/
 const content = document.querySelector('.page'); 
 
+
 /**имя пользователя в профиле на странице*/
 const nameProfile = content?.querySelector('.profile__name');
 /**занятие/профессия пользователя в профиле на странице*/
@@ -19,6 +20,8 @@ const buttonAddCardForm = content?.querySelector('#button-card');
 /**зона для карточек*/
 const areaCards = content?.querySelector('.elements'); 
 
+/**форма профиля */
+const formProfile = document.forms.profileInfo;
 
 /**popup с формой редактирования профиля*/
 const popupProfileEditForm = content?.querySelector('#popup-profile');
@@ -31,6 +34,9 @@ const userNameInput = content?.querySelector('#profile-name');
 /**поле ввода занятия/профессии пользователя*/
 const userProfileInput = content?.querySelector('#profile-person'); 
 
+
+/**форма новой карточки */
+const formCard = document.forms.newCardInfo;
 
 /**popup с формой для добавления новой карточки*/
 const popupAddCardForm = content?.querySelector('#popup-card'); 
@@ -135,6 +141,7 @@ function handleSubmitProfileForm (evt) {
   personProfile.textContent = userProfileInput.value;
 
   closePopup(popupProfileEditForm);
+  formProfile.reset();
 };
 
 
@@ -148,6 +155,7 @@ function handleSubmitCardForm (evt) {
   areaCards.prepend(newUserCard);
   
   closePopup(popupAddCardForm);
+  formCard.reset();
 };
 
 
