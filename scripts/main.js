@@ -181,8 +181,8 @@ function openPopup(element) {
 function closePopup(element) {
   element.classList.remove('popup_opened');
 
-  body.removeEventListener('click', closePressEsc);
-  body.removeEventListener('keydown', closeClickOverlay);
+  body.removeEventListener('click', closeClickOverlay);
+  body.removeEventListener('keydown', closePressEsc);
 };
 
 
