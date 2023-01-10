@@ -195,6 +195,9 @@ function closePopup(element) {
 
 
 
+
+
+
 /*          ***вызовы функций***          */
 
 //создание карточек из массива
@@ -230,3 +233,128 @@ buttonAddCardForm?.addEventListener('click', function() {
 buttonCloseAddCardForm?.addEventListener('click', function() {
   closePopup(popupAddCardForm);
 });
+
+
+
+
+
+
+
+/*          ***валидация***        */
+
+/**форма в модальном окне */
+const formElement = content.querySelector('.popup__form');
+/**инпут в форме */
+const formInput = formElement.querySelector('.popup__input');
+/**спан с сообщением об ошибке */
+// const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+/**добавление инпуту класса с ошибкой */
+function showInputError(formElement, formInput, errorMessage) {
+    /**спан с сообщением об ошибке */
+    const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+  formInput.classList.add('popup__input_type_error');
+
+  formError.textContent = errorMessage;
+  formError.classList.add('popup__input-error_active');
+};
+
+
+/**удаление у инпута класса с ошибкой */
+function hideInputError(formElement, formInput) {
+  /**спан с сообщением об ошибке */
+  const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+  formInput.classList.remove('popup__input_type_error');
+
+  formError.classList.remove('popup__input-error_active');
+  formError.textContent = '';
+};
+
+
+/**проверка валидности кода */
+function isValid(formElement, formInput) {
+    if (formInput.validity.patternMismatch) {
+    // встроенный метод setCustomValidity принимает на вход строку и заменяет ею стандартное сообщение об ошибке
+    formInput.setCustomValidity(formInput.dataset.errorMessage);
+  } else {
+    // если передать пустую строку, то будут доступны стандартные браузерные сообщения
+    formInput.setCustomValidity("");
+  }
+  
+    if (!formInput.validity.valid) {
+    // поле не проходит валидацию
+    showInputError(formElement, formInput, formInput.validationMessage);
+  } else {
+    // поле проходит валидацию
+    hideInputError(formElement, formInput);
+  }
+};
+
+
+/**поиск невалидного инпута */
+function hasInvalidInput(inputList) {
+  // проходим по этому массиву инпутов методом some
+  return inputList.some((formInput) => {
+    // Если поле не валидно, колбэк вернёт true, Обход массива прекратится и вся функция hasInvalidInput вернёт true
+    return !formInput.validity.valid;
+  })
+}; 
+
+
+/**переключение кнопки при изменении валидности инпутов */
+function toggleButtonState(inputList, formButton) {
+  // Если есть хотя бы один невалидный инпут
+  if (hasInvalidInput(inputList)) {
+    // сделай кнопку неактивной
+    formButton.disabled = true;
+    formButton.classList.add('popup__button-save_inactive');
+  } else {
+        // иначе сделай кнопку активной
+    formButton.disabled = false;
+    formButton.classList.remove('popup__button-save_inactive');
+  }
+}; 
+
+
+/**функция обработки инпутов по валидации в форме */
+function handleFormInputs(formElement) {
+  /**массив инпутов в форме */
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  /**кнопка submit в форме */
+  const formButton = formElement.querySelector('.popup__button-save');
+
+  toggleButtonState(inputList, formButton);
+
+  inputList.forEach((formInput) => {
+    // каждому полю добавим обработчик события input
+    formInput.addEventListener('input', () => {
+      // вызовем isValid, передав ей форму и проверяемый элемент
+      isValid(formElement, formInput);
+      toggleButtonState(inputList, formButton);
+    });
+  });
+};
+
+
+/**функция обработки форм для валидации*/
+function enableValidation() {
+  /**массив форм */
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+
+  formList.forEach((formElement) => {
+    // вызовем handleFormInputs, передав ей элемент формы
+    handleFormInputs(formElement);
+  });
+};
+
+
+
+//вызываем функцию обработки форм для валидации
+enableValidation(); 
+
+
+
+
+

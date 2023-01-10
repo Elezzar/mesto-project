@@ -41,30 +41,43 @@
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
 
+      <!-- модальное окно редактирования профиля -->
       <div class="popup" id="popup-profile"> <!--popup_opened-->
         <div class="popup__container" id="profile-form">
           <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля" id="close-button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="profileInfo" action="#" method="get">
-            <input class="popup__input" name="profile-name" type="text" placeholder="Имя" value="Жак-Ив Кусто" required id="profile-name">  <!--popup__input_data_name-->
-            <input class="popup__input" name="profile-person" type="text" placeholder="Деятельность" value="Исследователь океана" required id="profile-person">  <!--popup__input_data_name-->
-            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Сохранить</button>
+          <form class="popup__form" name="profileInfo" action="#" method="get" novalidate> <!--novalidate-->
+            <input class="popup__input" name="profile-name" type="text" placeholder="Имя" value="Жак-Ив Кусто" id="profile-name" 
+            required minlength="2" maxlength="40" pattern="^[A-Za-zА-Яа-яЁё -]+$" 
+            data-error-message="разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы">  <!--popup__input_type_error--> 
+            <span class="profile-name-error popup__input-error"></span> <!--popup__input-error_active-->
+            <input class="popup__input" name="profile-person" type="text" placeholder="О себе" value="Исследователь океана" id="profile-person" 
+            required minlength="2" maxlength="200" pattern="^[A-Za-zА-Яа-яЁё -]+$"
+            data-error-message="разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы">  <!--popup__input_type_error-->
+            <span class="profile-person-error popup__input-error"></span> <!--popup__input-error_active-->
+            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Сохранить</button> <!--popup__button-save_inactive-->
           </form>     
         </div> 
       </div>
 
+      <!-- модальное окно добавления новой карточки -->
       <div class="popup" id="popup-card"> <!--popup_opened-->
         <div class="popup__container" id="card-form">
           <button class="popup__button-close" type="button" aria-label="закрыть окно" id="close-button-card"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" name="newCardInfo" action="#" method="get">
-            <input class="popup__input" name="card-name" type="text" placeholder="Название" required id="card-name">  <!--popup__input_data_name-->
-            <input class="popup__input" name="img-url" type="text" placeholder="Ссылка на картинку" required id="img-url">  <!--popup__input_data_name-->
-            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button>
+          <form class="popup__form" name="newCardInfo" action="#" method="get" novalidate> <!--novalidate-->
+            <input class="popup__input" name="card-name" type="text" placeholder="Название" id="card-name" 
+            required minlength="2" maxlength="30" pattern="^[A-Za-zА-Яа-яЁё -]+$"
+            data-error-message="разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы">  <!--popup__input_type_error-->
+            <span class="card-name-error popup__input-error">хуябра</span> <!--popup__input-error_active-->
+            <input class="popup__input" name="img-url" type="url" placeholder="Ссылка на картинку" id="img-url" required>  <!--popup__input_type_error-->
+            <span class="img-url-error popup__input-error"></span> <!--popup__input-error_active-->
+            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button> <!--popup__button-save_inactive-->
           </form>     
         </div> 
       </div>
 
+      <!-- модальное окно открытия полноразмерного изображения/карточки -->
       <div class="popup popup_darker" id="popup-image"> <!--popup_opened-->
         <div class="popup__image-container">
           <button class="popup__button-close" type="button" aria-label="закрыть окно" id="popup-image-closed"></button>
