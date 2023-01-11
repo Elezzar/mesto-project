@@ -276,7 +276,8 @@ function hideInputError(formElement, formInput) {
 /**проверка валидности кода */
 function isValid(formElement, formInput) {
     if (formInput.validity.patternMismatch) {
-    // встроенный метод setCustomValidity принимает на вход строку и заменяет ею стандартное сообщение об ошибке
+    // встроенный метод setCustomValidity принимает на вход строку и заменяет ею 
+    //стандартное сообщение об ошибке
     formInput.setCustomValidity(formInput.dataset.errorMessage);
   } else {
     // если передать пустую строку, то будут доступны стандартные браузерные сообщения
@@ -297,7 +298,8 @@ function isValid(formElement, formInput) {
 function hasInvalidInput(inputList) {
   // проходим по этому массиву инпутов методом some
   return inputList.some((formInput) => {
-    // Если поле не валидно, колбэк вернёт true, Обход массива прекратится и вся функция hasInvalidInput вернёт true
+    // Если поле не валидно, колбэк вернёт true, Обход массива прекратится 
+    //и вся функция hasInvalidInput вернёт true
     return !formInput.validity.valid;
   })
 }; 
@@ -353,8 +355,3 @@ function enableValidation() {
 
 //вызываем функцию обработки форм для валидации
 enableValidation(); 
-
-
-
-
-
