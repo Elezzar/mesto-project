@@ -246,35 +246,34 @@ buttonCloseAddCardForm?.addEventListener('click', function() {
 const formElement = content.querySelector('.popup__form');
 /**инпут в форме */
 const formInput = formElement.querySelector('.popup__input');
-/**спан с сообщением об ошибке */
-// const formError = formElement.querySelector(`.${formInput.id}-error`);
+
 
 /**добавление инпуту класса с ошибкой */
-function showInputError(formElement, formInput, errorMessage) {
+function showInputError(formElement, formInput, errorMessage, settings) {
     /**спан с сообщением об ошибке */
     const formError = formElement.querySelector(`.${formInput.id}-error`);
 
-  formInput.classList.add('popup__input_type_error');
+  formInput.classList.add(settings.inputErrorClass);
 
   formError.textContent = errorMessage;
-  formError.classList.add('popup__input-error_active');
+  formError.classList.add(settings.errorClass);
 };
 
 
 /**удаление у инпута класса с ошибкой */
-function hideInputError(formElement, formInput) {
+function hideInputError(formElement, formInput, settings) {
   /**спан с сообщением об ошибке */
   const formError = formElement.querySelector(`.${formInput.id}-error`);
 
-  formInput.classList.remove('popup__input_type_error');
+  formInput.classList.remove(settings.inputErrorClass);
 
-  formError.classList.remove('popup__input-error_active');
+  formError.classList.remove(settings.errorClass);
   formError.textContent = '';
 };
 
 
 /**проверка валидности кода */
-function isValid(formElement, formInput) {
+function isValid(formElement, formInput, settings) {
     if (formInput.validity.patternMismatch) {
     // встроенный метод setCustomValidity принимает на вход строку и заменяет ею 
     //стандартное сообщение об ошибке
@@ -286,10 +285,10 @@ function isValid(formElement, formInput) {
   
     if (!formInput.validity.valid) {
     // поле не проходит валидацию
-    showInputError(formElement, formInput, formInput.validationMessage);
+    showInputError(formElement, formInput, formInput.validationMessage, settings);
   } else {
     // поле проходит валидацию
-    hideInputError(formElement, formInput);
+    hideInputError(formElement, formInput, settings);
   }
 };
 
@@ -306,52 +305,58 @@ function hasInvalidInput(inputList) {
 
 
 /**переключение кнопки при изменении валидности инпутов */
-function toggleButtonState(inputList, formButton) {
+function toggleButtonState(inputList, formButton, settings) {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
     formButton.disabled = true;
-    formButton.classList.add('popup__button-save_inactive');
+    formButton.classList.add(settings.inactiveButtonClass);
   } else {
         // иначе сделай кнопку активной
     formButton.disabled = false;
-    formButton.classList.remove('popup__button-save_inactive');
+    formButton.classList.remove(settings.inactiveButtonClass);
   }
 }; 
 
 
 /**функция обработки инпутов по валидации в форме */
-function handleFormInputs(formElement) {
+function handleFormInputs(formElement, settings) {
   /**массив инпутов в форме */
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   /**кнопка submit в форме */
-  const formButton = formElement.querySelector('.popup__button-save');
+  const formButton = formElement.querySelector(settings.submitButtonSelector);
 
-  toggleButtonState(inputList, formButton);
+  toggleButtonState(inputList, formButton, settings);
 
   inputList.forEach((formInput) => {
     // каждому полю добавим обработчик события input
     formInput.addEventListener('input', () => {
       // вызовем isValid, передав ей форму и проверяемый элемент
-      isValid(formElement, formInput);
-      toggleButtonState(inputList, formButton);
+      isValid(formElement, formInput, settings);
+      toggleButtonState(inputList, formButton, settings);
     });
   });
 };
 
 
 /**функция обработки форм для валидации*/
-function enableValidation() {
+function enableValidation(settings) {
   /**массив форм */
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
   formList.forEach((formElement) => {
     // вызовем handleFormInputs, передав ей элемент формы
-    handleFormInputs(formElement);
+    handleFormInputs(formElement, settings);
   });
 };
 
 
 
-//вызываем функцию обработки форм для валидации
-enableValidation(); 
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active' 
+}); 
