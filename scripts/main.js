@@ -353,10 +353,10 @@ function enableValidation(settings) {
 
 
 enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button-save_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active' 
+  formSelector: '.popup__form', //форма попапа 
+  inputSelector: '.popup__input', //инпут в форме
+  submitButtonSelector: '.popup__button-save', //кнопка "сохранить" в попапе
+  inactiveButtonClass: 'popup__button-save_inactive', //состояние "неактивной" кнопки
+  inputErrorClass: 'popup__input_type_error', //состояние инпута, не прошедшего валидацию
+  errorClass: 'popup__input-error_active' //спан с сообщением ошибки 
 }); 
