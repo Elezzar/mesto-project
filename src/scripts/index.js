@@ -17,9 +17,9 @@ import { areaCards,
   nameImageCardInput,
   urlImageCardInput, 
   popupFullSizeImage, 
-  buttoneCloseImageFullSize } from './utils.js'
+  buttoneCloseImageFullSize } from './constants.js'
 
-import { openPopup, closePopup } from './modal.js'
+import { openPopup, closePopup } from './utils.js'
 
 import { createCard, renderCard } from './card.js'
 

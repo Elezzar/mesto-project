@@ -1,6 +1,6 @@
-import { areaCards, popupFullSizeImage, imageFullSize, nameImageFullSize, cardTemplate } from './utils.js'
+import { areaCards, popupFullSizeImage, imageFullSize, nameImageFullSize, cardTemplate } from './constants.js'
 
-import { openPopup } from './modal.js'
+import { openPopup } from './utils.js'
 
 import { initialCards } from './cards.js'
 
