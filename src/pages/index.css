@@ -18,12 +18,12 @@
 @import url('../blocks/element/element.css');
 @import url('../blocks/element/__img/element__img.css');
 @import url('../blocks/element/__button-trash/element__button-trash.css');
+@import url('../blocks/element/__button-trash/_visible/element__button-trash_visible.css');
 @import url('../blocks/element/__text-zone/element__text-zone.css');
 @import url('../blocks/element/__name/element__name.css');
 @import url('../blocks/element/__like-zone/element__like-zone.css');
 @import url('../blocks/element/__button-heart/element__button-heart.css');
 @import url('../blocks/element/__like-count/element__like-count.css');
-@import url('../blocks/element/__like-count/_visible/element__like-count_visible.css');
 @import url('../blocks/element/__button-heart/_active/element__button-heart_active.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');

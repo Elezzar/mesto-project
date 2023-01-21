@@ -1,29 +1,60 @@
 import '../pages/index.css';
 
+import { getProfile, 
+  getCards, 
+  editProfile,
+  changeUserAvatar, 
+  createNewCard } from './api.js'
+
 import { areaCards, 
+  profile,
+  profileAvatar,
+  buttonEditProfile,
   nameProfile, 
   personProfile, 
   buttonProfileEditForm, 
   buttonAddCardForm, 
   popupProfileEditForm, 
-  buttonClosePopupProfile, 
   containerProfileEditForm, 
   userNameInput,
   userProfileInput,
   formCard,
   popupAddCardForm,
-  buttonCloseAddCardForm,
   containerAddCardForm,
   nameImageCardInput,
   urlImageCardInput, 
-  popupFullSizeImage, 
-  buttoneCloseImageFullSize } from './constants.js'
+  buttonCreateCard,
+  buttonAddAvatar,
+  avatarUrl,
+  popupAvatar,
+  buttonEditAvatar,
+  containerAddAvatarForm, 
+  buttonsClose,
+  } from './constants.js'
 
 import { openPopup, closePopup } from './utils.js'
 
-import { createCard, renderCard } from './card.js'
+import { createCard } from './card.js'
 
 import { enableValidation } from './validate.js'
+
+
+
+Promise.all([getProfile(), getCards()])
+.then(([user, cards]) => {
+  profile.id = user._id;
+  nameProfile.textContent = user.name;
+  personProfile.textContent = user.about;
+  profileAvatar.src = user.avatar;
+
+  cards.forEach(card => {
+    areaCards.append(createCard(card, user));
+  });
+})
+
+  .catch((err) => {
+    console.log(err);
+})
 
 
 /*          ***функции***          */
@@ -32,34 +63,78 @@ import { enableValidation } from './validate.js'
 /**внесение данных из popup профиля*/
 function handleSubmitProfileForm (evt) {
   evt.preventDefault();
+
+  buttonEditProfile.textContent = 'Сохранение...';
   
   //присвоение данных атрибутам
   nameProfile.textContent = userNameInput.value;
   personProfile.textContent = userProfileInput.value;
 
-  closePopup(popupProfileEditForm);
+  editProfile(userNameInput.value, userProfileInput.value)
+  .then((user) => {
+    nameProfile.textContent = user.name;
+    personProfile.textContent = user.about;
+
+    closePopup(popupProfileEditForm);
+  })
+
+  .catch((err) => {
+    console.log(err);
+  })
+
+  .finally(() => {
+    buttonEditProfile.textContent = 'Сохранить';
+  })
 };
+
+
+/**добавление аватара пользователя*/
+function handleUserAvatarForm (evt) {
+  evt.preventDefault();
+
+  buttonAddAvatar.textContent = 'Сохранение...';
+
+  changeUserAvatar(avatarUrl.value)
+  .then((user) => {
+    profileAvatar.src = user.avatar;
+    closePopup(popupAvatar)
+  }) 
+
+  .catch((err) => {
+    console.log(err);
+  })
+
+  .finally(() => {
+    buttonAddAvatar.textContent = 'Сохранить';
+  })
+} 
 
 
 /**создание пользовательской карточки с данными из popup с карточкой*/
 function handleSubmitCardForm (evt) {
   evt.preventDefault();
 
-  /**переменная с данными для карточки от пользователя */
-  const newUserCard = createCard({name: nameImageCardInput.value, link: urlImageCardInput.value});
-  
-  areaCards.prepend(newUserCard);
-  
-  closePopup(popupAddCardForm);
-  formCard.reset();
+  buttonCreateCard.textContent = 'Создание...';
+
+  createNewCard(nameImageCardInput.value, urlImageCardInput.value)
+    .then((card) => {
+      areaCards.prepend(createCard(card, card.owner));
+      closePopup(popupAddCardForm);
+      formCard.reset();
+    })
+
+    .catch((err) => {
+      console.log(err);
+    })
+
+    .finally(() => {
+      buttonCreateCard.textContent = 'Создать';
+    })  
 };
 
 
 
 /*          ***вызовы функций***          */
-
-//создание карточек из массива
-renderCard();
 
 //редактирование профиля после заполнение формы
 containerProfileEditForm.addEventListener('submit', handleSubmitProfileForm);
@@ -67,19 +142,12 @@ containerProfileEditForm.addEventListener('submit', handleSubmitProfileForm);
 //создание карточки после заполнения формы
 containerAddCardForm.addEventListener('submit', handleSubmitCardForm);
 
-//закрытие модального окна с полноразмерным изображением по кнопке "крестик"
-buttoneCloseImageFullSize?.addEventListener('click', function() {
-  closePopup(popupFullSizeImage)
-});
+//создание аватара после заполнения формы
+containerAddAvatarForm.addEventListener('submit', handleUserAvatarForm);
 
 //окрытие модального окна редактирования профиля по кнопке "редактирования"
 buttonProfileEditForm?.addEventListener('click', function() {
   openPopup(popupProfileEditForm);
-});
-
-//закрытие модального окна редактирования профиля по кнопке "крестик"
-buttonClosePopupProfile?.addEventListener('click', function() {
-  closePopup(popupProfileEditForm);
 });
 
 //открытие модального окна создания новой карточки по кнопке "плюс"
@@ -87,10 +155,18 @@ buttonAddCardForm?.addEventListener('click', function() {
   openPopup(popupAddCardForm);
 });
 
-//закрытие модального окна создания новой карточки по кнопке "крестик"
-buttonCloseAddCardForm?.addEventListener('click', function() {
-  closePopup(popupAddCardForm);
+//открытие модального окна изменения аватара
+buttonEditAvatar?.addEventListener('click', function() {
+  openPopup(popupAvatar);
 });
+
+//закрытие всех попапов на крестик
+buttonsClose.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', function () {
+    closePopup(popup);
+  })
+})
 
 
 enableValidation({

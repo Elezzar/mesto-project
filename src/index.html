@@ -18,11 +18,11 @@
 
         <section class="profile">
           <button class="profile__button-edit-avatar" type="button" aria-label="редактирование аватара" id="">
-            <img class="profile__avatar" src="<%=require('./images/avatar-image.png')%>" alt="Фотография Жака-Ива Кусто">
+            <img class="profile__avatar" src="<%=require('./images/avatar-image.png')%>" alt="аватар">
           </button>
           <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <p class="profile__person">Исследователь океана</p>
+            <h1 class="profile__name"></h1>
+            <p class="profile__person"></p>
             <button class="profile__button-edit" type="button" aria-label="редактирование профиля" id="button-edit"></button>
           </div>
           <button class="profile__button-add" type="button" aria-label="добавить карточку с местом" id="button-card"></button>
@@ -43,7 +43,7 @@
       <!-- модальное окно редактирования профиля -->
       <div class="popup" id="popup-profile"> <!--popup_opened-->
         <div class="popup__container" id="profile-form">
-          <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля" id="close-button"></button>
+          <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="profileInfo" action="#" method="get" novalidate> <!--novalidate-->
             <input class="popup__input" name="profile-name" type="text" placeholder="Имя" value="Жак-Ив Кусто" id="profile-name" 
@@ -54,7 +54,7 @@
             required minlength="2" maxlength="200" pattern="^[A-Za-zА-Яа-яЁё -]+$"
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">  <!--popup__input_type_error-->
             <span class="profile-person-error popup__input-error"></span> <!--popup__input-error_active-->
-            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Сохранить</button> <!--popup__button-save_inactive-->
+            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="Сохранить" id="buttonEditProfile">Сохранить</button> <!--popup__button-save_inactive-->
           </form>     
         </div> 
       </div>
@@ -62,7 +62,7 @@
       <!-- модальное окно добавления новой карточки -->
       <div class="popup" id="popup-card"> <!--popup_opened-->
         <div class="popup__container" id="card-form">
-          <button class="popup__button-close" type="button" aria-label="закрыть окно" id="close-button-card"></button>
+          <button class="popup__button-close" type="button" aria-label="закрыть окно"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form" name="newCardInfo" action="#" method="get" novalidate> <!--novalidate-->
             <input class="popup__input" name="card-name" type="text" placeholder="Название" id="card-name" 
@@ -71,7 +71,7 @@
             <span class="card-name-error popup__input-error"></span> <!--popup__input-error_active-->
             <input class="popup__input" name="img-url" type="url" placeholder="Ссылка на картинку" id="img-url" required>  <!--popup__input_type_error-->
             <span class="img-url-error popup__input-error"></span> <!--popup__input-error_active-->
-            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button> <!--popup__button-save_inactive-->
+            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="Создать" id="buttonCreateCard">Создать</button> <!--popup__button-save_inactive-->
           </form>     
         </div> 
       </div>
@@ -79,21 +79,21 @@
       <!-- модальное окно открытия полноразмерного изображения/карточки -->
       <div class="popup popup_darker" id="popup-image"> <!--popup_opened-->
         <div class="popup__image-container">
-          <button class="popup__button-close" type="button" aria-label="закрыть окно" id="popup-image-closed"></button>
+          <button class="popup__button-close" type="button" aria-label="закрыть окно"></button>
           <img class="popup__image">
           <h2 class="popup__image-name"></h2>
         </div>
       </div>
 
       <!-- модальное окно редактирования аватара -->
-      <div class="popup" id=""> <!--popup_opened-->
-        <div class="popup__container" id="">
-          <button class="popup__button-close" type="button" aria-label="закрыть окно" id=""></button>
+      <div class="popup" id="popup-avatar"> <!--popup_opened-->
+        <div class="popup__container" id="avatar-form">
+          <button class="popup__button-close" type="button" aria-label="закрыть окно"></button>
           <h2 class="popup__title">Обновить аватар</h2>
           <form class="popup__form" name="" action="#" method="get" novalidate> <!--novalidate-->
-            <input class="popup__input" name="" type="url" placeholder="Ссылка на аватар" id="" required>  <!--popup__input_type_error-->
-            <span class="img-url-error popup__input-error"></span> <!--popup__input-error_active-->
-            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button> <!--popup__button-save_inactive-->
+            <input class="popup__input" name="avatar-url" type="url" placeholder="Ссылка на аватар" id="avatar-url" required>  <!--popup__input_type_error-->
+            <span class="avatar-url-error popup__input-error"></span> <!--popup__input-error_active-->
+            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="Сохранить" id="buttonAddAvatar">Сохранить</button> <!--popup__button-save_inactive-->
           </form>     
         </div> 
       </div>
@@ -101,12 +101,12 @@
       <template class="card-template">
         <li class="element">
           <img class="element__img">
-          <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
+          <button class="element__button-trash" type="button" aria-label="удалить карточку"></button> <!-- element__button-trash_visible-->
           <div class="element__text-zone">
             <h2 class="element__name"></h2>
             <div class="element__like-zone">
               <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
-              <p class="element__like-count"></p> <!--element__like-count_visible-->
+              <p class="element__like-count"></p>
             </div>
           </div>
         </li>

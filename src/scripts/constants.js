@@ -7,6 +7,13 @@ const content = document.querySelector('.page');  // modal
 /**зона для карточек*/
 const areaCards = content?.querySelector('.elements'); // в index, cards
 
+/**профиль */
+const profile = content?.querySelector('.profile'); //в index
+/**изображение аватара профиля */
+const profileAvatar = content?.querySelector('.profile__avatar'); //в index
+
+/**кнопка сохранения данных профиля */
+const buttonEditProfile = content?.querySelector('#buttonEditProfile'); //в index
 /**имя пользователя в профиле на странице*/
 const nameProfile = content?.querySelector('.profile__name'); // в index
 /**занятие/профессия пользователя в профиле на странице*/
@@ -18,8 +25,6 @@ const buttonAddCardForm = content?.querySelector('#button-card'); // в index
 
 /**popup с формой редактирования профиля*/
 const popupProfileEditForm = content?.querySelector('#popup-profile'); // в index
-/**кнопка закрытия popup с редактированием профиля*/
-const buttonClosePopupProfile = content?.querySelector('#close-button'); // в index
 /**контейнер с формой внутри popup редактирования профиля*/
 const containerProfileEditForm = content?.querySelector('#profile-form'); // в index
 /**поле ввода имени пользователя*/
@@ -31,24 +36,38 @@ const userProfileInput = content?.querySelector('#profile-person'); // в index
 const formCard = document.forms.newCardInfo;
 /**popup с формой для добавления новой карточки*/
 const popupAddCardForm = content?.querySelector('#popup-card'); // в index
-/**кнопка закрытия popup для добавления новой карточки*/
-const buttonCloseAddCardForm = content?.querySelector('#close-button-card'); // в index
 /**контейнер с формой внутри popup добавления карточки*/
 const containerAddCardForm = content?.querySelector('#card-form'); // в index
 /**поле ввода названия изображения новой карточки*/
 const nameImageCardInput = content?.querySelector('#card-name'); // в index
 /**поле ввода ссылки на изображение новой карточки*/
 const urlImageCardInput = content?.querySelector('#img-url'); // в index
+/**кнопка сохранения новой карточки */
+const buttonCreateCard = content?.querySelector('#buttonCreateCard'); //в index
 
 
 /**popup с полноразмерным изображением*/
-const popupFullSizeImage = content?.querySelector('#popup-image'); // в index, cards
+const popupFullSizeImage = content?.querySelector('#popup-image'); // в cards
 /**полноразмерное изображение в popup*/
 const imageFullSize = popupFullSizeImage?.querySelector('.popup__image'); // в cards
 /**название изображения в popup*/
 const nameImageFullSize = popupFullSizeImage?.querySelector('.popup__image-name'); // в cards
-/**кнопка закрытия popup с полноразмерным изображением*/
-const buttoneCloseImageFullSize = content?.querySelector('#popup-image-closed'); //в index
+
+
+/**кнопка сохранения нового аватара */
+const buttonAddAvatar = content?.querySelector('#buttonAddAvatar'); //в index
+/**поле ввода ссылки на изображение нового аватара */
+const avatarUrl = content?.querySelector('#avatar-url'); //в index
+/**popup с формой для добавления нового аватара */
+const popupAvatar = content?.querySelector('#popup-avatar'); //в index   
+/**кнопка открытия модального окна изменения аватара */
+const buttonEditAvatar = content?.querySelector('.profile__button-edit-avatar'); //в index
+
+/**контейнер с формой внутри popup редактирования аватара */
+const containerAddAvatarForm = content?.querySelector('#avatar-form');
+
+/**все кнопки закрытия на крестик */
+const buttonsClose = content?.querySelectorAll('.popup__button-close');
 
 
 
@@ -58,23 +77,30 @@ const cardTemplate = content?.querySelector('.card-template')?.content; // в ca
 export { body, 
   content, 
   areaCards,
+  profile,
+  profileAvatar,
+  buttonEditProfile,
   nameProfile,
   personProfile,
   buttonProfileEditForm,
   buttonAddCardForm,
   popupProfileEditForm,
-  buttonClosePopupProfile,
   containerProfileEditForm,
   userNameInput,
   userProfileInput,
   formCard,
   popupAddCardForm,
-  buttonCloseAddCardForm,
   containerAddCardForm,
   nameImageCardInput,
   urlImageCardInput,
-  popupFullSizeImage, 
+  buttonCreateCard,
+  popupFullSizeImage,
   imageFullSize, 
   nameImageFullSize, 
-  buttoneCloseImageFullSize,
+  buttonAddAvatar,
+  avatarUrl,
+  popupAvatar,
+  buttonEditAvatar,
+  containerAddAvatarForm,
+  buttonsClose,
   cardTemplate }
