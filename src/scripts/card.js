@@ -11,7 +11,7 @@ import { deleteCard, putLike, deleteLike } from './api.js'
 function createCard(card, user) {
 
   /**скелет карточки из template */
-  const cardElement = cardTemplate.cloneNode(true);
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
 
   /**изображение в карточке */
   const imageCard = cardElement.querySelector('.element__img');
@@ -40,7 +40,7 @@ function createCard(card, user) {
  
   if (card.likes.length !== 0) {
     card.likes.forEach((like) => {
-      if (like._id.includes(user._id)) {
+      if (like._id.includes(user)) {
         buttonToggleLikeStatus.classList.add('element__button-heart_active');
       } else {
         buttonToggleLikeStatus.classList.remove('element__button-heart_active');
@@ -87,7 +87,7 @@ function createCard(card, user) {
   /**ближайший родитель к кнопке удаления */
   const itemRemove = buttonTrash.closest('.element');
   
-  if (card.owner._id === user._id ) {
+  if (card.owner._id === user ) {
     buttonTrash.classList.add('element__button-trash_visible');
   }
 

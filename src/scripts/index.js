@@ -48,8 +48,10 @@ Promise.all([getProfile(), getCards()])
   profileAvatar.src = user.avatar;
 
   cards.forEach(card => {
-    areaCards.append(createCard(card, user));
+    areaCards.append(createCard(card, user._id));
   });
+
+  console.log(profile)
 })
 
   .catch((err) => {
@@ -66,10 +68,6 @@ function handleSubmitProfileForm (evt) {
 
   buttonEditProfile.textContent = 'Сохранение...';
   
-  //присвоение данных атрибутам
-  nameProfile.textContent = userNameInput.value;
-  personProfile.textContent = userProfileInput.value;
-
   editProfile(userNameInput.value, userProfileInput.value)
   .then((user) => {
     nameProfile.textContent = user.name;

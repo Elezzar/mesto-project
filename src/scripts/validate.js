@@ -3,10 +3,10 @@ function showInputError(formElement, formInput, errorMessage, settings) {
   /**спан с сообщением об ошибке */
   const formError = formElement.querySelector(`.${formInput.id}-error`);
 
-formInput.classList.add(settings.inputErrorClass);
+  formInput.classList.add(settings.inputErrorClass);
 
-formError.textContent = errorMessage;
-formError.classList.add(settings.errorClass);
+  formError.textContent = errorMessage;
+  formError.classList.add(settings.errorClass);
 };
 
 
