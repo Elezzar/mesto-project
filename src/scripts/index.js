@@ -149,7 +149,7 @@ containerAddAvatarForm.addEventListener('submit', handleUserAvatarForm);
 buttonProfileEditForm?.addEventListener('click', function() {
   openPopup(popupProfileEditForm);
   userNameInput.value = nameProfile.textContent;
-  userProfileInputy.value = personProfile.textContent;
+  userProfileInput.value = personProfile.textContent;
 });
 
 //открытие модального окна создания новой карточки по кнопке "плюс"
