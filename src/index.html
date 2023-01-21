@@ -17,7 +17,9 @@
       <main class="content">
 
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/avatar-image.png')%>" alt="Фотография Жака-Ива Кусто">
+          <button class="profile__button-edit-avatar" type="button" aria-label="редактирование аватара" id="">
+            <img class="profile__avatar" src="<%=require('./images/avatar-image.png')%>" alt="Фотография Жака-Ива Кусто">
+          </button>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__person">Исследователь океана</p>
@@ -66,7 +68,7 @@
             <input class="popup__input" name="card-name" type="text" placeholder="Название" id="card-name" 
             required minlength="2" maxlength="30" pattern="^[A-Za-zА-Яа-яЁё -]+$"
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">  <!--popup__input_type_error-->
-            <span class="card-name-error popup__input-error">хуябра</span> <!--popup__input-error_active-->
+            <span class="card-name-error popup__input-error"></span> <!--popup__input-error_active-->
             <input class="popup__input" name="img-url" type="url" placeholder="Ссылка на картинку" id="img-url" required>  <!--popup__input_type_error-->
             <span class="img-url-error popup__input-error"></span> <!--popup__input-error_active-->
             <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button> <!--popup__button-save_inactive-->
@@ -83,13 +85,29 @@
         </div>
       </div>
 
+      <!-- модальное окно редактирования аватара -->
+      <div class="popup" id=""> <!--popup_opened-->
+        <div class="popup__container" id="">
+          <button class="popup__button-close" type="button" aria-label="закрыть окно" id=""></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form class="popup__form" name="" action="#" method="get" novalidate> <!--novalidate-->
+            <input class="popup__input" name="" type="url" placeholder="Ссылка на аватар" id="" required>  <!--popup__input_type_error-->
+            <span class="img-url-error popup__input-error"></span> <!--popup__input-error_active-->
+            <button class="popup__button-save" type="submit" name="Сохранить" aria-label="">Создать</button> <!--popup__button-save_inactive-->
+          </form>     
+        </div> 
+      </div>
+
       <template class="card-template">
         <li class="element">
           <img class="element__img">
           <button class="element__button-trash" type="button" aria-label="удалить карточку"></button>
           <div class="element__text-zone">
             <h2 class="element__name"></h2>
-            <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
+            <div class="element__like-zone">
+              <button class="element__button-heart" type="button" aria-label="поставить лайк"></button> <!-- element__button-heart_active-->
+              <p class="element__like-count"></p> <!--element__like-count_visible-->
+            </div>
           </div>
         </li>
       </template>

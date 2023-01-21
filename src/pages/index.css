@@ -6,6 +6,7 @@
 @import url('../blocks/header/__logo/header__logo.css');
 @import url('../blocks/content/content.css');
 @import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__button-edit-avatar/profile__button-edit-avatar.css');
 @import url('../blocks/profile/__avatar/profile__avatar.css');
 @import url('../blocks/profile/__info/profile__info.css');
 @import url('../blocks/profile/__name/profile__name.css');
@@ -19,7 +20,10 @@
 @import url('../blocks/element/__button-trash/element__button-trash.css');
 @import url('../blocks/element/__text-zone/element__text-zone.css');
 @import url('../blocks/element/__name/element__name.css');
+@import url('../blocks/element/__like-zone/element__like-zone.css');
 @import url('../blocks/element/__button-heart/element__button-heart.css');
+@import url('../blocks/element/__like-count/element__like-count.css');
+@import url('../blocks/element/__like-count/_visible/element__like-count_visible.css');
 @import url('../blocks/element/__button-heart/_active/element__button-heart_active.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
