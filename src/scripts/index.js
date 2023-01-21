@@ -148,6 +148,8 @@ containerAddAvatarForm.addEventListener('submit', handleUserAvatarForm);
 //окрытие модального окна редактирования профиля по кнопке "редактирования"
 buttonProfileEditForm?.addEventListener('click', function() {
   openPopup(popupProfileEditForm);
+  userNameInput.value = nameProfile.textContent;
+  userProfileInputy.value = personProfile.textContent;
 });
 
 //открытие модального окна создания новой карточки по кнопке "плюс"
