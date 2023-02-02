@@ -32,7 +32,6 @@ import { areaCards,
   buttonsClose,
   } from './constants.js'
 
-import { openPopup, closePopup } from './utils.js'
 
 import { createCard } from './card.js'
 
