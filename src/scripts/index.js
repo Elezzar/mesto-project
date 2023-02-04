@@ -38,6 +38,14 @@ import { createCard } from './card.js'
 import { enableValidation } from './validate.js'
 
 
+const serverAuthorization = {
+  serverUrl: 'https://nomoreparties.co/v1/plus-cohort-17',
+  headers: {
+    authorization: 'f024cd52-7e5f-4d9c-952d-ed65a4f031f6',
+    'Content-Type': 'application/json',
+  },
+};
+
 
 Promise.all([getProfile(), getCards()])
 .then(([user, cards]) => {
