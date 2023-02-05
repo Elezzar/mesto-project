@@ -1,10 +1,6 @@
 import '../pages/index.css';
 
-import { getProfile, 
-  getCards, 
-  editProfile,
-  changeUserAvatar, 
-  createNewCard } from './api.js'
+import { Api } from './Api.js'
 
 import { areaCards, 
   profile,
