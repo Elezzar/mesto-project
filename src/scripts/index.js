@@ -35,7 +35,7 @@ import { areaCards,
 
 import { createCard } from './card.js'
 
-import { enableValidation } from './validate.js'
+import { FormValidator } from './FormValidator.js'
 
 
 const serverAuthorization = {
