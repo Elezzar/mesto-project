@@ -1,7 +1,7 @@
 export default class Api {
-  constructor({ url, headers }) {
-    this.url = url;
-    this.headers = headers;
+  constructor(serverData) {
+    this._url = serverData.url;
+    this._headers = serverData.headers;
   }
 
   /**проверка ответа сервера */
@@ -14,25 +14,25 @@ export default class Api {
 
   /**получение данных профиля с сервера*/
   getProfileData() {
-    return fetch(`${this.url}/users/me`, {
-      headers: this.headers
+    return fetch(`${this._url}/users/me`, {
+      headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
   }
 
   /**получение карточек с сервера */
   getInitialCards() {
-    return fetch(`${this.url}/cards`, {
-      headers: this.headers
+    return fetch(`${this._url}/cards`, {
+      headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
   }
 
   /**редактирование данных профиля на сервере*/
   sendProfileData({ name, description }) {
-    return fetch(`${this.url}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         about: description
@@ -43,9 +43,9 @@ export default class Api {
 
   /**создание новой карточки на сервере*/
   addNewCard({ name, link }) {
-    return fetch(`${this.url}/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
-      headers: this.headers,
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         link: link
@@ -56,36 +56,36 @@ export default class Api {
 
   /**удаление карточки с сервера */
   deleteCard(id) {
-    return fetch(`${this.url}/cards/${id}`, {
+    return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
-      headers: this.headers
+      headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
   }
 
   /**поставить лайк */
   placeLikeOnCard(id) {
-    return fetch(`${this.url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
-      headers: this.headers
+      headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
   }
 
   /**удалить лайк */
   deleteLikeFromCard(id) {
-    return fetch(`${this.url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
-      headers: this.headers
+      headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
   }
 
   /**изменение аватара на сервере */
   changeUserAvatar(avatar) {
-    return fetch(`${this.url}/users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatar
       }),
