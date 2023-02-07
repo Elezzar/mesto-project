@@ -33,7 +33,7 @@ const userNameInput = content.querySelector('#profile-name'); // в index
 const userProfileInput = content.querySelector('#profile-person'); // в index
 
 /**форма новой карточки */
-const formCard = document.forms.newCardInfo;
+const formCard = document.forms.newCardInfo;// addProfileInfo, addAvatar
 /**popup с формой для добавления новой карточки*/
 const popupAddCardForm = content.querySelector('#popup-card'); // в index
 /**контейнер с формой внутри popup добавления карточки*/
@@ -69,6 +69,10 @@ const containerAddAvatarForm = content.querySelector('#avatar-form');
 /**все кнопки закрытия на крестик */
 const buttonsClose = content.querySelectorAll('.popup__button-close');
 
+/**форма профиля */
+const formProfile = document.forms.addProfileInfo;
+/**форма аватара */
+const formAvatar = document.forms.addAvatar;
 
 
 /**template со скелетом карточек*/
@@ -103,4 +107,6 @@ export { body,
   buttonEditAvatar,
   containerAddAvatarForm,
   buttonsClose,
+  formProfile,
+  formAvatar,
   cardTemplate }

@@ -45,7 +45,7 @@
         <div class="popup__container" id="profile-form">
           <button class="popup__button-close" type="button" aria-label="закрыть окно редакрирования профиля"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="profileInfo" action="#" method="get" novalidate> <!--novalidate-->
+          <form class="popup__form" name="addProfileInfo" action="#" method="get" novalidate> <!--novalidate-->
             <input class="popup__input" name="profile-name" type="text" placeholder="Имя" value="Жак-Ив Кусто" id="profile-name" 
             required minlength="2" maxlength="40" pattern="^[A-Za-zА-Яа-яЁё -]+$" 
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">  <!--popup__input_type_error--> 
@@ -90,7 +90,7 @@
         <div class="popup__container" id="avatar-form">
           <button class="popup__button-close" type="button" aria-label="закрыть окно"></button>
           <h2 class="popup__title">Обновить аватар</h2>
-          <form class="popup__form" name="" action="#" method="get" novalidate> <!--novalidate-->
+          <form class="popup__form" name="addAvatar" action="#" method="get" novalidate> <!--novalidate-->
             <input class="popup__input" name="avatar-url" type="url" placeholder="Ссылка на аватар" id="avatar-url" required>  <!--popup__input_type_error-->
             <span class="avatar-url-error popup__input-error"></span> <!--popup__input-error_active-->
             <button class="popup__button-save" type="submit" name="Сохранить" aria-label="Сохранить" id="buttonAddAvatar">Сохранить</button> <!--popup__button-save_inactive-->

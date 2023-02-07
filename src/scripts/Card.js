@@ -7,8 +7,8 @@ export default class Card {
   ) {
     this._cardData = card;
     this._currentUserId = userId;
-    this._template = template;
-    this._likes = card.likes.length;
+    this._templateSelector = template;
+    this._likes = [card.likes.length];
     this._handleCardDelete = deleteHandler;
     this._handleLikeClick = likeHandler;
     this._handleCardClick = clickHandler;
@@ -19,7 +19,6 @@ export default class Card {
       .querySelector(this._templateSelector)
       .content.querySelector(".element")
       .cloneNode(true);
-
     return cardElement;
   }
 
@@ -76,7 +75,10 @@ export default class Card {
     this._trashBtn.addEventListener("click", () => this._handleCardDelete());
     this._likeBtn.addEventListener("click", () => this._handleLikeClick());
     this._cardImage.addEventListener("click", () => {
-      this._handleCardClick({ name: this._name, link: this._link });
+      this._handleCardClick({
+        imageSrc: this._cardData.link,
+        text: this._cardData.name,
+      });
     });
   }
 

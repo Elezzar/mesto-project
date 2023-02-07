@@ -14,6 +14,8 @@ import {
   userNameInput,
   userProfileInput,
   formCard,
+  formProfile,
+  formAvatar,
   popupAddCardForm,
   containerAddCardForm,
   nameImageCardInput,
@@ -49,23 +51,48 @@ const serverAuthorization = {
   },
 };
 
+const settings = {
+  inputSelector: ".popup__input", //инпут в форме
+  submitButtonSelector: ".popup__button-save", //кнопка "сохранить" в попапе
+  inactiveButtonClass: "popup__button-save_inactive", //состояние "неактивной" кнопки
+  inputErrorClass: "popup__input_type_error", //состояние инпута, не прошедшего валидацию
+  errorClass: "popup__input-error_active", //спан с сообщением ошибки
+};
+
+const formCardValidator = new FormValidator(settings, formCard);
+const formProfileValidator = new FormValidator(settings, formProfile);
+const formAvatarValidator = new FormValidator(settings, formAvatar);
+
+formCardValidator.enableValidation();
+formProfileValidator.enableValidation();
+formAvatarValidator.enableValidation();
+
 const api = new Api(serverAuthorization);
 
+const imagePopup = new PopupWithImage("popup-image", "popup_opened");
+
 const userInfo = new UserInfo(
-  '.profile__name',
-  '.profile__avatar',
-  '.profile__person',
+  ".profile__name",
+  ".profile__avatar",
+  ".profile__person",
   api.getProfileData,
   api.sendProfileData
 );
 
 Promise.all([api.getProfileData(), api.getInitialCards()])
   .then(([user, cards]) => {
-    userInfo.setUserInfo(user)
-    profile.id = user._id;
+    userInfo.setUserInfo(user);
 
+    const section = new Section({}, ".elements");
     cards.forEach((card) => {
-      areaCards.append(createCard(card, user._id));
+      const item = new Card(card, user._id, ".card-template", {
+        likeHandler: () => {},
+        deleteHandler: () => {},
+        clickHandler: (link, name) => {
+          imagePopup.open(link, name);
+        },
+      });
+      section.addItem(item.generateCard());
     });
 
     console.log(profile);
@@ -177,13 +204,4 @@ Promise.all([api.getProfileData(), api.getInitialCards()])
 //   button.addEventListener("click", function () {
 //     closePopup(popup);
 //   });
-// });
-
-// enableValidation({
-//   formSelector: ".popup__form", //форма попапа
-//   inputSelector: ".popup__input", //инпут в форме
-//   submitButtonSelector: ".popup__button-save", //кнопка "сохранить" в попапе
-//   inactiveButtonClass: "popup__button-save_inactive", //состояние "неактивной" кнопки
-//   inputErrorClass: "popup__input_type_error", //состояние инпута, не прошедшего валидацию
-//   errorClass: "popup__input-error_active", //спан с сообщением ошибки
 // });

@@ -76,30 +76,30 @@ export default class FormValidator {
   
   /**обработка инпутов по валидации в форме */
   _handleFormInputs() {
-    this._toggleButtonState(inputList, formButton);
+    this._toggleButtonState(this._inputList, this._formButton);
   
     this._formElement.addEventListener('reset', () => {
       setTimeout(() => {
-        this._toggleButtonState(inputList, formButton);
+        this._toggleButtonState(this._inputList, this._formButton);
       }, 0);
     });
   
     this._inputList.forEach((formInput) => {
     // каждому полю добавим обработчик события input
-    this._formInput.addEventListener('input', () => {
+    formInput.addEventListener('input', () => {
       // вызовем isValid, передав ей форму и проверяемый элемент
       this._isValid(formInput);
-      this._toggleButtonState(inputList, formButton);
+      this._toggleButtonState(this._inputList, this._formButton);
       });
     });
   };
   
   /**обработка форм для валидации*/
   enableValidation() {
-    this.formElement.addEventListener('submit', (evt) => {
+    this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
     // вызовем handleFormInputs, передав ей элемент формы
-      this._handleFormInputs(formElement);
+      this._handleFormInputs(this._formElement);
   };
 }
