@@ -29,13 +29,13 @@ export default class Api {
   }
 
   /**редактирование данных профиля на сервере*/
-  sendProfileData({ name, description }) {
+  sendProfileData(user) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        about: description
+        name: user.name,
+        about: user.about
       })
     })
       .then(res => this._checkServerResponce(res))
@@ -87,7 +87,7 @@ export default class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatar
+        avatar: avatar.avatarurl
       }),
     })
       .then(res => this._checkServerResponce(res));
