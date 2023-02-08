@@ -47,8 +47,8 @@ export default class Card {
   }
 
   _setTrashBtnState() {
-    if (this._cardData.owner._id === this._currentUserId) {
-      buttonTrash.classList.add("element__button-trash_visible");
+    if (this._cardData.owner._id != this._currentUserId) {
+      this._trashBtn.classList.add("element__button-trash_visible");
     }
   }
 
@@ -72,8 +72,8 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._trashBtn.addEventListener("click", () => this._handleCardDelete());
-    this._likeBtn.addEventListener("click", () => this._handleLikeClick());
+    this._trashBtn.addEventListener("click", () => this._deleteCard());
+    this._likeBtn.addEventListener("click", () => this._setLike);
     this._cardImage.addEventListener("click", () => {
       this._handleCardClick({
         imageSrc: this._cardData.link,

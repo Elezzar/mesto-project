@@ -86,8 +86,12 @@ Promise.all([api.getProfileData(), api.getInitialCards()])
     const section = new Section({}, ".elements");
     cards.forEach((card) => {
       const item = new Card(card, user._id, ".card-template", {
-        likeHandler: () => {},
-        deleteHandler: () => {},
+        likeHandler: () => {
+
+        },
+        deleteHandler: () => {
+          
+        },
         clickHandler: (link, name) => {
           imagePopup.open(link, name);
         },
