@@ -8,17 +8,20 @@ const content = document.querySelector('.page');
 const buttonProfileEditForm = content.querySelector('#button-edit'); // в index
 /**кнопка вызова popup с формой для добавления новой карточки*/
 const buttonAddCardForm = content.querySelector('#button-card'); // в index
-
-/**форма новой карточки */
-const formCard = document.forms.newCardInfo;// addProfileInfo, addAvatar
-
 /**кнопка открытия модального окна изменения аватара */
 const buttonEditAvatar = content.querySelector('.profile__button-edit-avatar'); //в index
 
+/**форма новой карточки */
+const formCard = document.forms.newCardInfo;// addProfileInfo, addAvatar
 /**форма профиля */
 const formProfile = document.forms.addProfileInfo;
 /**форма аватара */
 const formAvatar = document.forms.addAvatar;
+
+/**инпут с именем пользователя */
+const userNameInput = content.querySelector('#profile-name');
+/**инпут с занятием/работой пользователя */
+const userPersonInput = content.querySelector('#profile-person');
 
 const settings = {
   inputSelector: ".popup__input", //инпут в форме
@@ -40,10 +43,12 @@ const serverAuthorization = {
 export { body, 
   buttonProfileEditForm,
   buttonAddCardForm,
+  buttonEditAvatar,
   formCard,
   formProfile,
   formAvatar,
-  buttonEditAvatar,
+  userNameInput,
+  userPersonInput,
   settings,
   serverAuthorization
   }

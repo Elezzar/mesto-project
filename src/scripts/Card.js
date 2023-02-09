@@ -24,9 +24,11 @@ export default class Card {
   }
 
   _deleteCard() {
-    this._card.remove();
-    this._card = null;
-    this._cardDeleteHandler(this._cardData._id);
+
+    this._cardDeleteHandler(this._cardData._id).then(() => {
+      this._card.remove();
+      this._card = null;
+    });
   }
 
   _isLiked() {

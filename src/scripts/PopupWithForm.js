@@ -18,11 +18,13 @@ export default class PopupWithForm extends Popup {
   }
 
   _submitEvtHandler() {
+    this.setBtnStatus(true)
     this.formSubmitCallback(this._getInputValues());
   }
 
   setEventListeners() {
     super.setEventListeners();
+    
     this.popupForm.addEventListener("submit", () => {this._submitEvtHandler()});
   }
 
@@ -31,11 +33,11 @@ export default class PopupWithForm extends Popup {
     this.popupForm.reset();
   }
 
-  setBtnStatusSaving(isLoading) {
+  setBtnStatus(isLoading) {
     if (isLoading) {
-      this.submitButton.value = "Сохранение...";
+      this.submitButton.textContent = "Сохранение...";
     } else {
-      this.submitButton.value = "Сохранить";
+      this.submitButton.textContent = "Сохранить";
     }
   }
 }
