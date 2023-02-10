@@ -104,10 +104,10 @@ const cardPopup = new PopupWithForm("popup-card", "popup_opened", (values) => {
     });
 });
 
-function deleteCard(card, element) {
-  api.deleteCard(card._id)
+function deleteCard(card, id) {
+  api.deleteCard(id)
     .then(() => {
-      element.remove();
+      card.remove();
       card = null;
     })
     .catch((err) => {
