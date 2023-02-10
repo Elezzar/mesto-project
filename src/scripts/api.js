@@ -18,9 +18,6 @@ export default class Api {
       headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 
   /**получение карточек с сервера */
@@ -29,9 +26,6 @@ export default class Api {
       headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 
   /**редактирование данных профиля на сервере*/
@@ -45,9 +39,6 @@ export default class Api {
       })
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 
   /**создание новой карточки на сервере*/
@@ -61,9 +52,6 @@ export default class Api {
       })
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 
   /**удаление карточки с сервера */
@@ -73,9 +61,6 @@ export default class Api {
       headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 
   /**поставить лайк */
@@ -85,9 +70,6 @@ export default class Api {
       headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 
   /**удалить лайк */
@@ -97,9 +79,6 @@ export default class Api {
       headers: this._headers
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 
   /**изменение аватара на сервере */
@@ -112,9 +91,6 @@ export default class Api {
       }),
     })
       .then(res => this._checkServerResponce(res))
-      .catch((err) => {
-        console.log(err);
-    })
   }
 }
 

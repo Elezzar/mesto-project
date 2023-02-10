@@ -40,9 +40,7 @@ const imagePopup = new PopupWithImage("popup-image", "popup_opened");
 const userInfo = new UserInfo(
   ".profile__name",
   ".profile__avatar",
-  ".profile__person",
-  api.getProfileData.bind(api),
-  api.sendProfileData.bind(api)
+  ".profile__person"
 );
 
 const section = new Section({}, ".elements");
@@ -56,6 +54,9 @@ const avatarPopup = new PopupWithForm(
       .then((res) => {
         userInfo.setUserInfo(res);
         avatarPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
       })
       .finally(() => {
         avatarPopup.setBtnStatus(false);
@@ -76,6 +77,9 @@ const profilePopup = new PopupWithForm(
         userInfo.setUserInfo(res);
         profilePopup.close();
       })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         profilePopup.setBtnStatus(false);
       });
@@ -92,19 +96,55 @@ const cardPopup = new PopupWithForm("popup-card", "popup_opened", (values) => {
       section.addItem(createCard(res, userId));
       cardPopup.close();
     })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       cardPopup.setBtnStatus(false);
     });
 });
 
+function deleteCard(card, element) {
+  api.deleteCard(card._id)
+    .then(() => {
+      element.remove();
+      card = null;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+
+function putLike(id, button, likeCounter) {
+  api.placeLikeOnCard(id)
+    .then((res)=>{
+    button.classList.add("element__button-heart_active");
+    likeCounter.textContent = res.likes.length;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+
+function deleteLike(id, button, likeCounter) {
+  api.deleteLikeFromCard(id)
+    .then((res)=>{
+      button.classList.remove("element__button-heart_active");
+      likeCounter.textContent = res.likes.length;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+
 function createCard(card, id) {
   const item = new Card(card, id, ".card-template", {
-    likeHandler: api.placeLikeOnCard.bind(api),
-    deleteHandler: api.deleteLikeFromCard.bind(api),
+    likeHandler: putLike,
+    deleteHandler: deleteLike,
     clickHandler: (link, name) => {
       imagePopup.open(link, name);
     },
-    cardDelete: api.deleteCard.bind(api),
+    cardDelete: deleteCard,
   });
   const cardElement = item.generateCard();
   return cardElement;
