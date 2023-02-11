@@ -1,106 +1,54 @@
 /**страница - для закрытия модальных окон по клику на overlay */
-const body = document.querySelector('.body'); // в modal
+const body = document.querySelector('.body');
 
 /**контент страницы*/
-const content = document.querySelector('.page');  // modal
+const content = document.querySelector('.page');
 
-/**зона для карточек*/
-const areaCards = content?.querySelector('.elements'); // в index, cards
-
-/**профиль */
-const profile = content?.querySelector('.profile'); //в index
-/**изображение аватара профиля */
-const profileAvatar = content?.querySelector('.profile__avatar'); //в index
-
-/**кнопка сохранения данных профиля */
-const buttonEditProfile = content?.querySelector('#buttonEditProfile'); //в index
-/**имя пользователя в профиле на странице*/
-const nameProfile = content?.querySelector('.profile__name'); // в index
-/**занятие/профессия пользователя в профиле на странице*/
-const personProfile = content?.querySelector('.profile__person'); // в index
 /**кнопка вызова popup с формой редактирования профиля*/
-const buttonProfileEditForm = content?.querySelector('#button-edit'); // в index
+const buttonProfileEditForm = content.querySelector('#button-edit'); // в index
 /**кнопка вызова popup с формой для добавления новой карточки*/
-const buttonAddCardForm = content?.querySelector('#button-card'); // в index
-
-/**popup с формой редактирования профиля*/
-const popupProfileEditForm = content?.querySelector('#popup-profile'); // в index
-/**контейнер с формой внутри popup редактирования профиля*/
-const containerProfileEditForm = content?.querySelector('#profile-form'); // в index
-/**поле ввода имени пользователя*/
-const userNameInput = content?.querySelector('#profile-name'); // в index
-/**поле ввода занятия/профессии пользователя*/
-const userProfileInput = content?.querySelector('#profile-person'); // в index
+const buttonAddCardForm = content.querySelector('#button-card'); // в index
+/**кнопка открытия модального окна изменения аватара */
+const buttonEditAvatar = content.querySelector('.profile__button-edit-avatar'); //в index
 
 /**форма новой карточки */
-const formCard = document.forms.newCardInfo;
-/**popup с формой для добавления новой карточки*/
-const popupAddCardForm = content?.querySelector('#popup-card'); // в index
-/**контейнер с формой внутри popup добавления карточки*/
-const containerAddCardForm = content?.querySelector('#card-form'); // в index
-/**поле ввода названия изображения новой карточки*/
-const nameImageCardInput = content?.querySelector('#card-name'); // в index
-/**поле ввода ссылки на изображение новой карточки*/
-const urlImageCardInput = content?.querySelector('#img-url'); // в index
-/**кнопка сохранения новой карточки */
-const buttonCreateCard = content?.querySelector('#buttonCreateCard'); //в index
+const formCard = document.forms.newCardInfo;// addProfileInfo, addAvatar
+/**форма профиля */
+const formProfile = document.forms.addProfileInfo;
+/**форма аватара */
+const formAvatar = document.forms.addAvatar;
 
+/**инпут с именем пользователя */
+const userNameInput = content.querySelector('#profile-name');
+/**инпут с занятием/работой пользователя */
+const userPersonInput = content.querySelector('#profile-person');
 
-/**popup с полноразмерным изображением*/
-const popupFullSizeImage = content?.querySelector('#popup-image'); // в cards
-/**полноразмерное изображение в popup*/
-const imageFullSize = popupFullSizeImage?.querySelector('.popup__image'); // в cards
-/**название изображения в popup*/
-const nameImageFullSize = popupFullSizeImage?.querySelector('.popup__image-name'); // в cards
+const settings = {
+  inputSelector: ".popup__input", //инпут в форме
+  submitButtonSelector: ".popup__button-save", //кнопка "сохранить" в попапе
+  inactiveButtonClass: "popup__button-save_inactive", //состояние "неактивной" кнопки
+  inputErrorClass: "popup__input_type_error", //состояние инпута, не прошедшего валидацию
+  errorClass: "popup__input-error_active", //спан с сообщением ошибки
+};
 
+const serverAuthorization = {
+  url: "https://nomoreparties.co/v1/plus-cohort-17",
+  headers: {
+    authorization: "f024cd52-7e5f-4d9c-952d-ed65a4f031f6",
+    "Content-Type": "application/json",
+  },
+};
 
-/**кнопка сохранения нового аватара */
-const buttonAddAvatar = content?.querySelector('#buttonAddAvatar'); //в index
-/**поле ввода ссылки на изображение нового аватара */
-const avatarUrl = content?.querySelector('#avatar-url'); //в index
-/**popup с формой для добавления нового аватара */
-const popupAvatar = content?.querySelector('#popup-avatar'); //в index   
-/**кнопка открытия модального окна изменения аватара */
-const buttonEditAvatar = content?.querySelector('.profile__button-edit-avatar'); //в index
-
-/**контейнер с формой внутри popup редактирования аватара */
-const containerAddAvatarForm = content?.querySelector('#avatar-form');
-
-/**все кнопки закрытия на крестик */
-const buttonsClose = content?.querySelectorAll('.popup__button-close');
-
-
-
-/**template со скелетом карточек*/
-const cardTemplate = content?.querySelector('.card-template')?.content; // в cards
 
 export { body, 
-  content, 
-  areaCards,
-  profile,
-  profileAvatar,
-  buttonEditProfile,
-  nameProfile,
-  personProfile,
   buttonProfileEditForm,
   buttonAddCardForm,
-  popupProfileEditForm,
-  containerProfileEditForm,
-  userNameInput,
-  userProfileInput,
-  formCard,
-  popupAddCardForm,
-  containerAddCardForm,
-  nameImageCardInput,
-  urlImageCardInput,
-  buttonCreateCard,
-  popupFullSizeImage,
-  imageFullSize, 
-  nameImageFullSize, 
-  buttonAddAvatar,
-  avatarUrl,
-  popupAvatar,
   buttonEditAvatar,
-  containerAddAvatarForm,
-  buttonsClose,
-  cardTemplate }
+  formCard,
+  formProfile,
+  formAvatar,
+  userNameInput,
+  userPersonInput,
+  settings,
+  serverAuthorization
+  }

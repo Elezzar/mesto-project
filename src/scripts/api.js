@@ -1,108 +1,113 @@
-/**авторизация на сервере */
-const serverAuthorization = {
-  serverUrl: 'https://nomoreparties.co/v1/plus-cohort-17',
-  headers: {
-    authorization: 'f024cd52-7e5f-4d9c-952d-ed65a4f031f6',
-    'Content-Type': 'application/json',
-  },
-};
-
-/**проверка ответа сервера */
-function checkResponseServer (res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Ошибка: ${res.status, res.ok}`);
-};
-
-/**получение данных профиля с сервера*/
-function getProfile () {
-  return fetch(`${serverAuthorization.serverUrl}/users/me`, {
-    headers: serverAuthorization.headers
-  })
-
-  .then(res => checkResponseServer(res))
-}
-
-/**получение карточек с сервера */
-function getCards () {
-  return fetch(`${serverAuthorization.serverUrl}/cards`, {
-    headers: serverAuthorization.headers
-  })
-  .then(res => checkResponseServer(res))
-};
-
-/**редактирование данных профиля на сервере*/
-function editProfile (name, about) {
-  return fetch(`${serverAuthorization.serverUrl}/users/me`, {
-    method: 'PATCH',
-    headers: serverAuthorization.headers,
-    body: JSON.stringify({
-      name: name,
-      about: about
-    })
-  })
-
-  .then(res => checkResponseServer(res))
-}
-
-/**создание новой карточки на сервере*/
-function createNewCard (name, link) {
-  return fetch(`${serverAuthorization.serverUrl}/cards`, {
-    method: 'POST',
-    headers: serverAuthorization.headers,
-    body: JSON.stringify({
-      name: name,
-      link: link
-    })
-  })
-
-  .then(res => checkResponseServer(res))
-}
-
-/**удаление карточки с сервера */
-function deleteCard (cardId) {
-  return fetch(`${serverAuthorization.serverUrl}/cards/${cardId}`, {
-    method: 'DELETE',
-    headers: serverAuthorization.headers
-    })
-
-    .then(res => checkResponseServer(res))
+export default class Api {
+  constructor(serverData) {
+    this._url = serverData.url;
+    this._headers = serverData.headers;
   }
 
-/**поставить лайк */
-function putLike (cardId) {
-  return fetch(`${serverAuthorization.serverUrl}/cards/likes/${cardId}`, {
-    method: 'PUT',
-    headers: serverAuthorization.headers
+  /**проверка ответа сервера */
+  _checkServerResponce(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status, res.ok}`);
+  }
+
+  /**получение данных профиля с сервера*/
+  getProfileData() {
+    return fetch(`${this._url}/users/me`, {
+      headers: this._headers
     })
-  
-    .then(res => checkResponseServer(res))
-}
+      .then(res => this._checkServerResponce(res))
+  }
 
-/**удалить лайк */
-function deleteLike (cardId) {
-  return fetch(`${serverAuthorization.serverUrl}/cards/likes/${cardId}`, {
-    method: 'DELETE',
-    headers: serverAuthorization.headers
+  /**получение карточек с сервера */
+  getInitialCards() {
+    return fetch(`${this._url}/cards`, {
+      headers: this._headers
     })
+      .then(res => this._checkServerResponce(res))
+  }
 
-    .then(res => checkResponseServer(res))
+  /**редактирование данных профиля на сервере*/
+  sendProfileData(user) {
+    return fetch(`${this._url}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: user.name,
+        about: user.about
+      })
+    })
+      .then(res => this._checkServerResponce(res))
+  }
+
+  /**создание новой карточки на сервере*/
+  addNewCard({ name, link }) {
+    return fetch(`${this._url}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        link: link
+      })
+    })
+      .then(res => this._checkServerResponce(res))
+  }
+
+  /**удаление карточки с сервера */
+  deleteCard(id) {
+    return fetch(`${this._url}/cards/${id}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+      .then(res => this._checkServerResponce(res))
+  }
+
+  /**поставить лайк */
+  placeLikeOnCard(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+      .then(res => this._checkServerResponce(res))
+  }
+
+  /**удалить лайк */
+  deleteLikeFromCard(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+      .then(res => this._checkServerResponce(res))
+  }
+
+  /**изменение аватара на сервере */
+  changeUserAvatar(avatar) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: avatar.avatarurl
+      }),
+    })
+      .then(res => this._checkServerResponce(res))
+  }
 }
 
-/**изменение аватара на сервере */
-function changeUserAvatar (avatar) {
-  return fetch(`${serverAuthorization.serverUrl}/users/me/avatar`, {
-    method: 'PATCH',
-    headers: serverAuthorization.headers,
-    body: JSON.stringify({
-      avatar: avatar
-    }),
-  })
-  .then(res => checkResponseServer(res));
-}
 
 
 
 
-  export { serverAuthorization, getProfile, getCards, editProfile, createNewCard, changeUserAvatar, deleteCard, putLike, deleteLike }
+
+
+
+
+
+
+
+
+
+
+
+
+
